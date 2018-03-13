@@ -1,0 +1,35 @@
+<template name="show_room">
+	<div class="page-header">
+		<h3>{{room.name}}</h3>
+		{{> user_invite }}
+	</div>
+	<div class="page-content">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h5>
+					Users in room
+				</h5>
+				<table class="table">
+					{{#each id in activeUsers}}
+						<tr>
+							<td>{{ userName(id) }}</td>
+							<td> 
+								{{#if (imTheOwner) }}
+									{{#if (isntMe(id))}}
+										<a href="" class="">
+											kick out
+										</a>
+									{{/if}}
+								{{/if}}
+							</td>
+						</tr>
+					{{/each}}
+				</table>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				{{> chat_box }} 
+			</div>
+		</div>
+	</div>
+</template>

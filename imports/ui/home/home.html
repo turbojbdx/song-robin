@@ -1,0 +1,12 @@
+
+
+<template name="home">
+  	
+   		{{#if currentUser}}
+      		{{> rooms }}
+    	{{else}}
+     		{{> register_login }}
+    	{{/if}}	
+  	
+</template>
+ 

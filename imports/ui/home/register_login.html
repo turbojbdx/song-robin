@@ -1,0 +1,79 @@
+<template name="register_login">
+	<div id="register-login" style="display:none;">
+		<ul class="nav nav-tabs">
+	  		<li role="presentation" class="login-or-register {{#if showLogin}}active{{/if}}">
+	  			<a href="flogin">Login</a>
+	  		</li>
+	  		<li role="presentation" class="login-or-register {{#unless showLogin}}active{{/unless}}">
+	  			<a href="fregister">Register</a>
+	  		</li>
+		</ul>
+
+		{{#if showLogin}}
+			<br />
+			<form id="flogin" class="user-forms">
+		    	<table class="table table-bordered table-stripped small-table">
+		        	<tr>
+		        		<td width="30%" align="right"><br />Email&nbsp;&nbsp;</td>
+		        		<td> <br /><input type="email" name="email" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td width="30%" align="right"><br />Password&nbsp;&nbsp;</td>
+		        		<td><br /><input type="password" name="password" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td colspan="2" class="text-center">
+		        			<br />
+		        			<a href="javascript:void(0)" id="login-fb" class="login-fb">
+		        				Log in with facebook
+		        			</a>
+		        		</td>
+		        	</tr>
+		        	<tr>
+		        		<td colspan="2">
+		        			<Br />
+		        			<input type="submit" value="Login" class="btn btn-success full-width">
+		        		</td>
+		        	</tr>
+		    	</table>
+		    </form>
+		{{else}}
+	    	<br />
+
+		    <form id="fregister" class="user-forms">
+		        <table class="table table-bordered table-stripped small-table">
+		        	<tr>
+		        		<td width="30%" align="right"><br />Email&nbsp;&nbsp;</td>
+		        		<td><br /><input autocomplte="off" type="email" name="email" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td width="30%" align="right"><br />First Name&nbsp;&nbsp;</td>
+		        		<td><br /><input autocomplte="off" type="text" name="first_name" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td width="30%" align="right"><br />Last Name&nbsp;&nbsp;</td>
+		        		<td><br /><input autocomplte="off" type="text" name="last_name" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td width="30%" align="right"><br />Password&nbsp;&nbsp;</td>
+		        		<td><br /><input autocomplte="off" type="password" name="password" class="full-width"></td>
+		        	</tr>
+		        	<tr>
+		        		<td colspan="2" class="text-center">
+		        			<br />
+		        			<a href="javascript:void(0)" id="register-fb" class="login-fb">
+		        				Register with facebook
+		        			</a>
+		        		</td>
+		        	</tr>
+		        	<tr>
+		        		<td colspan="2">
+		        			<Br />
+		        			<input type="submit" value="Register" class="btn btn-success full-width">
+		        		</td>
+		        	</tr>
+		    	</table>
+		    </form>
+	    {{/if}}
+	</div>
+</template>

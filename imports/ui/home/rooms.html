@@ -1,0 +1,43 @@
+<template name="rooms">
+	<div class="modal fade" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <form id="create-room-form">
+		      	<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        	<h4 class="modal-title">Create a new room</h4>
+		      	</div>
+		      	<div class="modal-body">
+		        	<table class="table table-bordered">
+		        		<tr>
+		        			<td width="30%" align="right" style="padding: 15px;">Name</td>
+		        			<td style="padding: 15px;"> 
+		        				<input type="text" name="name" class="full-width" style="padding-left:7px;"/>
+		        			</td>
+		        		</tr>
+		        	</table>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        	<button type="button" class="btn btn-primary" onclick="$('#create-room-form').submit();">Create</button>
+		      	</div>
+	  		</form>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="page-header">
+		<h1>My Rooms</h1>
+		<a href="javascript:void(0);" class="btn btn-default" id="create-room">create room</a>
+	</div>
+
+	<div>
+		<table class="table table-bordered table-striped">
+			{{#each rooms}}
+				<tr>
+					{{> room }} 
+				</tr>
+			{{/each}}
+		</table>
+	</div>
+</template>

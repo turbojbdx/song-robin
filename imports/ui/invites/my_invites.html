@@ -1,0 +1,25 @@
+<template name="my_invites">
+	<div class="page-header">
+		<h3>Invites To Me</h3>
+	</div>
+	<div>
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th style="padding:10px;">Room</th>
+				<th style="padding:10px;">Owner</th>
+				<th></th>
+			</tr>
+			{{#each invitesToMe}}
+				<tr>
+					<td style="padding:10px;">{{roomName(room)}}</td>
+					<td style="padding:10px;">
+						{{userName(from)}}
+					</td>
+					<td style="padding:10px;">
+						<a href="javascript:void(0);" class="btn btn-success full-width join-room" data-room-id="{{room}}">Join</a>
+					</td>
+				</tr>
+			{{/each}}
+		</table>
+	</div>
+</template>

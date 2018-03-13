@@ -1,0 +1,31 @@
+<template name="chat_box">
+	<div class="messages-box" id="messages-box">
+		<table class="table">
+			{{#each latestMessages}}
+				<tr>
+					<td width="40%" class="text-center" style="padding:7px; vertical-align: top;">
+						{{userName(owner)}}
+					</td>
+					<td style="padding:7px;">
+						{{message}}
+					</td>
+				</tr>	
+			{{/each}}
+		</table>
+	</div>
+	<div class="submit-message-box" style="border: 1px solid red;">
+		<br />
+		<form id="room-message-form">
+			<table class="table">
+				<tr>
+					<td style="padding:7px;">
+						<textarea name="message" style="resize:none; min-height:60px;padding:5px;border:1px solid red;" class="full-width"></textarea> <br />
+						<div class="text-right">
+							<input type="submit" class="btn btn-success" />
+						</div>
+					</td> 
+				</tr>
+			</table>
+		</form>
+	</div>
+</template>
