@@ -27,11 +27,14 @@
 	</div>
 
 	<div class="page-header">
-		<h1>My Rooms</h1>
-		<a href="javascript:void(0);" class="btn btn-default" id="create-room">create room</a>
+		<h1>Home</h1>
+		<a href="javascript:void(0);" class="btn btn-default" id="create-room">create a new room</a>
 	</div>
 
 	<div>
+		<div>
+			<h3>My Rooms</h3>
+		</div>		
 		<table class="table table-bordered table-striped">
 			{{#each rooms}}
 				<tr>
@@ -40,4 +43,18 @@
 			{{/each}}
 		</table>
 	</div>
+	<Br />
+	<div>
+		<div>
+			<h3>Rooms I have been invited into</h3>
+		</div>		
+		<table class="table table-bordered table-striped">
+			{{#each invitedRooms}}
+				<tr>
+					{{> invited_room }} 
+				</tr>
+			{{/each}}
+		</table>
+	</div>
+
 </template>

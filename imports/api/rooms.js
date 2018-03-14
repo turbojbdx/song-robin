@@ -1,5 +1,6 @@
-import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
+import { Mongo }   from 'meteor/mongo';
+import { check }   from 'meteor/check';
+import { Invites } from './invites';
 
 const Rooms = new Mongo.Collection('rooms');
 
@@ -60,6 +61,9 @@ if(Meteor.isServer) {
   });
 
   Meteor.publish('rooms.show', function(roomId) {
+    
+    console.log("RUNNING");
+
     const me = this;
 
     if (!me.userId || !roomId) {
@@ -88,11 +92,17 @@ if(Meteor.isServer) {
   });
 
   Meteor.publish('rooms.find_one', function() {
-    const me = this;
-
-    if (!me.userId) {
+    if (!this.userId) {
       return me.ready();
     }
+
+    return Rooms.find({});
+  });
+
+  Meteor.publish('rooms.all', function() {
+    if (!this.userId) {
+      return me.ready();
+    } 
 
     return Rooms.find({});
   });

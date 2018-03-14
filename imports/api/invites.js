@@ -35,6 +35,17 @@ if(Meteor.isServer) {
 			fullfilled : false 
 		});
 	});
+
+    Meteor.publish('invites.2-me-fullfilled', function() {
+        if(!this.userId) {
+            return this.ready();
+        }
+
+        return Invites.find({ 
+            to         : this.userId, 
+            fullfilled : true 
+        });
+    });
 }
 
 Meteor.methods({
@@ -80,7 +91,39 @@ Meteor.methods({
     	}
 
     	Invites.insert(opts);
-	}
+	},
+    'invites.fullfill' : (inviteId) => {
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('not-authorized');
+        }   
+
+        check(inviteId, String);
+
+        let selector = { _id : inviteId };        
+        const invite = Invites.findOne(selector);
+        
+        if(!invite) {
+            throw new Meteor.Error(403, 'bad-invite');
+        }
+
+        if(invite.fullfilled == true) {
+            throw new Meteor.Error(403, 'invite-fullfilled')
+        }
+
+        if(invite.to !== Meteor.userId()) {
+            throw new Meteor.Error(401, 'not-authorized');
+        }
+
+        Rooms.update(invite.room, { 
+            $addToSet : {
+                guests : Meteor.userId()
+            }
+        });
+
+        Invites.update(invite._id, {
+            $set : { fullfilled : true }
+        });
+    } 
 });
 
 module.exports.Invites = Invites;

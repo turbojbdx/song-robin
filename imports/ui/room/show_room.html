@@ -1,7 +1,10 @@
 <template name="show_room">
 	<div class="page-header">
 		<h3>{{room.name}}</h3>
-		{{> user_invite }}
+		
+		{{#if (imTheOwner) }}
+			{{> user_invite }}
+		{{/if}}
 	</div>
 	<div class="page-content">
 		<div class="row">

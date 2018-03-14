@@ -44,9 +44,16 @@ Template.my_invites.helpers({
 
 Template.my_invites.events({
 	'click .join-room' : (event, instance) => {
-		const button = event.target;
-		const roomId = $(button).attr("data-room-id");	
+		const button   = event.target;
+		const inviteId = $(button).attr("data-invite-id");	
+		const roomId   = $(button).attr("data-room-id");	
 		
-		
+		Meteor.call('invites.fullfill', inviteId, (err) => {
+			if(err) {
+				alert(err);
+			}
+
+			FlowRouter.go(`/room/${roomId}`);
+		});	
 	}
 });

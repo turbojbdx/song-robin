@@ -1,9 +1,9 @@
-import { Template } from 'meteor/templating'; 
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveDict } from 'meteor/reactive-dict';
+import { Template }          from 'meteor/templating'; 
+import { FlowRouter }        from 'meteor/kadira:flow-router';
+import { ReactiveDict }      from 'meteor/reactive-dict';
 import '../../api/users.js';
-import { RoomMessages } from '../../api/room_messages.js';
-import { Rooms } from '../../api/rooms.js';
+import { RoomMessages }      from '../../api/room_messages.js';
+import { Rooms }             from '../../api/rooms.js';
 
 
 import './show_room.html'
@@ -18,7 +18,7 @@ Template.show_room.onCreated(function showRoomCreated() {
 		return FlowRouter.go('home');
 	}
 
-	this.getRoomId = () => FlowRouter.getParam('_id');
+	this.subscribe('rooms.show', FlowRouter.getParam('_id'));
 });
 
 Template.show_room.onRendered(function() {
@@ -55,6 +55,9 @@ Template.show_room.helpers({
 	},
 	imTheOwner() {
 		const room = Rooms.findOne({ _id : FlowRouter.getParam('_id') });
+		console.log(room);
+
+
 		return room.owner === Meteor.userId();
 	}
 });

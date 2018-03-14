@@ -3,7 +3,9 @@ import { Template } from 'meteor/templating';
 import '../../api/rooms.js'
 import './room.html'
 
-Template.room.onCreated(function roomsCreated() {});
+Template.room.onCreated(function roomsCreated() {
+	
+});
 
 Template.room.events({
 	'click .anchor-destroy-room' : (event, instance) => {

@@ -5,6 +5,7 @@ import '../imports/ui/layouts/app_body.js'
 // home
 import '../imports/ui/home/register_login.js'
 import '../imports/ui/home/rooms.js';
+import '../imports/ui/home/invited_room.js';
 import '../imports/ui/home/home.js';
 // room
 import '../imports/ui/room/chat_box.js';
